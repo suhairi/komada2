@@ -15,6 +15,17 @@ class CreateAhliTable extends Migration
     {
         Schema::create('ahli', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('noPekerja');
+            $table->string('noAhli');
+            $table->string('nama');
+            $table->string('nokp');
+            $table->string('jantina')->nullable();
+            $table->string('bangsa')->nullable();
+            $table->string('email')->nullable();
+            $table->string('alamat1')->nullable();
+            $table->string('alamat2')->nullable();
+            $table->string('tarikhAhli')->nullable();
+            $table->tinyInt('status');
             $table->timestamps();
         });
     }

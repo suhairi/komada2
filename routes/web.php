@@ -24,8 +24,49 @@ Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 
-	Route::get('daftar', [
-		'as'	=> 'daftarAhli',
-		'uses'	=> 'AhliController@index'
+	// KEAHLIAN
+	Route::group(['prefix' => 'keahlian'], function() {
+	
+		Route::get('daftar', [
+			'as'	=> 'daftarAhli',
+			'uses'	=> 'AhliController@index'
+		]);
+
+		Route::post('daftar', [
+			'as'	=> 'daftarAhliPost',
+			'uses'	=> 'AhliController@store'
+		]);
+
+		Route::get('daftarUpdate/{id}', [
+			'as'	=> 'updateKeahlian',
+			'uses'	=> 'AhliController@edit'
+		]);
+
+		Route::post('daftarUpdate/{id}', [
+			'as'	=> 'updateKeahlianPost',
+			'uses'	=> 'AhliController@update'
+		]);
+
+	});
+	
+	// PERJAWATAN
+	Route::group(['prefix' => 'perjawatan'], function() {
+		
+		Route::get('perjawatan/{noPekerja}', [
+			'as'	=> 'updatePerjawatan',
+			'uses'	=> 'PerjawatanController@edit'
+		]);
+
+
+	});
+
+	// HELPERS
+	Route::get('profile/{id}', [
+		'as'	=> 'profileAhli',
+		'uses'	=> 'ProfileController@profile'
 	]);
+
+
+
+
 });

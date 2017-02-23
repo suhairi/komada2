@@ -11,22 +11,27 @@
 				{!! Form::open() !!}
 
 				<div class="form-group">
-					<label>Nama Penuh</label>
+					<label>*Nama Penuh</label>
 					{!! Form::text('nama', '', ['required' => 'true', 'class' => 'form-control', 'placeholder' => 'Nama Penuh']) !!}
 				</div>
 
 				<div class="form-group">
-				<label>No Gaji/Pekerja</label>
+				<label>*No Gaji/Pekerja</label>
 				{!! Form::text('noPekerja', '', ['required' => 'true', 'class' => 'form-control', 'placeholder' => 'No Pekerja']) !!}
 				</div>
 
 				<div class="form-group">
-				<label>No Keahlian KOMADA</label>
+				<label>*No Keahlian KOMADA</label>
 				{!! Form::text('noAhli', '', ['required' => 'true', 'class' => 'form-control', 'placeholder' => 'No Ahli']) !!}
 				</div>
 
 				<div class="form-group">
-				<label>No Kad Pengenalan</label>
+				<label>Tarikh Jadi Ahli</label>
+				{!! Form::date('tarikhAhli', '', ['class' => 'form-control', 'placeholder' => 'Tarikh Ahli']) !!}
+				</div>
+
+				<div class="form-group">
+				<label>*No Kad Pengenalan</label>
 				{!! Form::text('nokp', '', ['required' => 'true', 'class' => 'form-control', 'placeholder' => 'No KP']) !!}
 				</div>
 
@@ -45,20 +50,17 @@
 				{!! Form::text('alamat2', '', ['class' => 'form-control', 'placeholder' => 'Alamat 2']) !!}
 				</div>
 
-
-
-
-
-
-
-
-
-
+				<div class="form-group pull-right">
+					{!! Form::submit('Daftar Ahli', ['class' => 'btn btn-primary']) !!}
+				</div>
 
 				{!! Form::close() !!}
 			</div>
 		</div>
 	</div>
+
+	@include('members.includes.keahlian.ahliTerkini')
+
 </div>	
 
 @endsection

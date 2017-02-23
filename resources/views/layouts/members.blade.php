@@ -24,6 +24,18 @@
 
     @include('layouts.nav')
 
+    @if(Session::has('success'))
+        <div class="alert-box success">
+            <h4>{{ Session::get('success') }}</h4>
+        </div>
+    @endif 
+
+    @if(Session::has('error'))
+        <div class="alert-box error">
+            <h4>{{ Session::get('error') }}</h4>
+        </div>
+    @endif 
+
     <div class="container">
 
       @yield('content')

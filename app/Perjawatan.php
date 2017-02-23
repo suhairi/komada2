@@ -12,6 +12,10 @@ class Perjawatan extends Model
 
     protected $dates 	= ['tarikhKhidmat'];
 
+    public function setJawatanAttribute($value) {
+    	$this->attribute['jawatan'] = strtoupper($value);
+    }
+
     public function ahli() {
     	return $this->belongsTo('App\Ahli', 'noPekerja', 'noPekerja');
     }

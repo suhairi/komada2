@@ -25,13 +25,13 @@
     @include('layouts.nav')
 
     @if(Session::has('success'))
-        <div class="alert-box success">
+        <div class="alert alert-success">
             <h4>{{ Session::get('success') }}</h4>
         </div>
     @endif 
 
     @if(Session::has('error'))
-        <div class="alert-box error">
+        <div class="alert alert-error">
             <h4>{{ Session::get('error') }}</h4>
         </div>
     @endif 

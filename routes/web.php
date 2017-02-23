@@ -57,6 +57,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'uses'	=> 'PerjawatanController@edit'
 		]);
 
+		Route::post('perjawatanUpdate/{id}', [
+			'as'	=> 'updatePerjawatanPost',
+			'uses'	=> 'PerjawatanController@update'
+		]);
+
 
 	});
 

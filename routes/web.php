@@ -16,8 +16,16 @@ Route::get('/', function () {
     	return view('home');
     else
     	return view('auth.login');
-});
+})->name('utama');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
+
+	Route::get('daftar', [
+		'as'	=> 'daftarAhli',
+		'uses'	=> 'AhliController@index'
+	]);
+});

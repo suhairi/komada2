@@ -4,7 +4,7 @@
 
 <div class="row">
 	<div class="col-xs-4">
-		<table class="table table-condensed table-striped">
+		<table class="table table-condensed table-striped table-bordered">
 		<tr>
 			<td colspan="2"><h4>Maklumat Keahlian</h4></td>
 		</tr>
@@ -59,7 +59,7 @@
 	</div>
 
 	<div class="col-xs-4">
-		<table class="table table-condensed table-striped">
+		<table class="table table-condensed table-striped table-bordered">
 		<tr>
 			<td colspan="2"><h4>Maklumat Perjawatan</h4></td>
 		</tr>
@@ -73,14 +73,17 @@
 				<td>{{ $perjawatan->jawatan }}</td>
 			</tr>
 			<tr>
-				<td><strong>Tarikh Khidmat</strong></td>
+				<td><strong>Zon Gaji</strong></td>
+				<td>{{ $perjawatan->zonGaji->nama }}</td>
+			</tr>
+			<tr>
+				<td><strong>Taraf Jawatan</strong></td>
 				<td>{{ $perjawatan->tarafJawatan }}</td>
 			</tr>
 			<tr>
 				<td><strong>Tarikh Khidmat</strong></td>
 				<td>{{ $perjawatan->tarikhKhidmat }}</td>
 			</tr>
-
 		@else
 			<tr>
 				<td colspan="2">Tiada maklumat.</td>
@@ -97,7 +100,7 @@
 	</div>
 
 	<div class="col-xs-4">
-		<table class="table table-condensed table-striped">
+		<table class="table table-condensed table-striped table-bordered">
 		<tr>
 			<td colspan="2"><h4>Maklumat Yuran</h4></td>
 		</tr>

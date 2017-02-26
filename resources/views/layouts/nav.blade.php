@@ -16,7 +16,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Keahlian <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ route('daftarAhli') }}">Daftar</a></li>
-            <li><a href="#">Carian</a></li>
+            <li><a href="{{ route('carianAhli') }}">Carian</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -38,7 +38,21 @@
             <li><a href="#">Pelajaran</a></li>
           </ul>
         </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Senarai <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Senarai Mengikut Jenis Pinjaman</a></li>
+            <li><a href="#">Senarai Mengikut Zon Gaji</a></li>
+          </ul>
+        </li>
+        
       </ul>
+
+      
+
+
+
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>

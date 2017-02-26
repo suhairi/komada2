@@ -25,7 +25,7 @@ class CreateAhliTable extends Migration
             $table->string('alamat1')->nullable();
             $table->string('alamat2')->nullable();
             $table->string('tarikhAhli')->nullable();
-            $table->tinyInt('status');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

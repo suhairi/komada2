@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('members.includes.css.uppercase')
+
 <div class="row">
 	<div class="col-xs-5">
 		<div class="panel panel-primary">

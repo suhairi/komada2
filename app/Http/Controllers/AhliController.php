@@ -58,7 +58,7 @@ class AhliController extends Controller
         $ahli->noAhli       = $request->get('noAhli');
         $ahli->nama         = $request->get('nama');
         $ahli->nokp         = $request->get('nokp');
-        $ahli->jantina      = $request->get('jantina');
+        $ahli->jantina      = $request->get('jantina');       
         $ahli->email        = $request->get('email');
         $ahli->alamat1      = $request->get('alamat1');
         $ahli->alamat2      = $request->get('alamat2');
@@ -119,10 +119,12 @@ class AhliController extends Controller
         $ahli->nama         = $request->get('nama');
         $ahli->nokp         = $request->get('nokp');
         $ahli->jantina      = $request->get('jantina');
+        $ahli->bangsa       = $request->get('bangsa'); 
         $ahli->email        = $request->get('email');
         $ahli->alamat1      = $request->get('alamat1');
         $ahli->alamat2      = $request->get('alamat2');
         $ahli->tarikhAhli   = $request->get('tarikhAhli');
+        $ahli->status       = $request->get('status');
 
 
         if($ahli->save())

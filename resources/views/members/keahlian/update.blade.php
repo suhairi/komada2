@@ -2,6 +2,8 @@
 
 @section('content')
 
+@include('members.includes.css.uppercase')
+
 <div class="row">
 	<div class="col-xs-6">
 		
@@ -42,6 +44,13 @@
 					</div>
 
 					<div class="form-group">
+					<label>Bangsa</label>
+					{!! Form::select('bangsa', ['MELAYU' => 'MELAYU', 'CINA' => 'CINA', 'INDIA' => 'INDIA', 'LAIN' => 'LAIN'], $ahli->bangsa, ['class' => 'form-control', 'placeholder' => 'Bangsa']) !!}
+					</div>
+
+
+
+					<div class="form-group">
 					<label>Alamat 1</label>
 					{!! Form::text('alamat1', $ahli->alamat1, ['class' => 'form-control', 'placeholder' => 'Alamat 1']) !!}
 					</div>
@@ -51,8 +60,14 @@
 					{!! Form::text('alamat2', $ahli->alamat2, ['class' => 'form-control', 'placeholder' => 'Alamat 2']) !!}
 					</div>
 
-					<div class="form-group pull-right">
-						{!! Form::submit('Kemaskini Maklumat Keahlian', ['class' => 'btn btn-primary']) !!}
+					<div class="form-group">
+					<label>Status</label>
+					{!! Form::select('status', ['1' => 'AKTIF', '0' => 'TIDAK AKTIF'], $ahli->status, ['class' => 'form-control', 'placeholder' => 'Status']) !!}
+					</div>
+
+					<div class="form-group">
+						<a href="{{ route('profileAhli', ['id' => $ahli->id]) }}"><< Kembali ke profil</a>
+						{!! Form::submit('Kemaskini Maklumat Keahlian', ['class' => 'btn btn-primary pull-right']) !!}
 					</div>
 				</table>
 				{!! Form::close() !!}				

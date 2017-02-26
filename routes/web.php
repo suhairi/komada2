@@ -57,7 +57,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'uses'	=> 'PerjawatanController@edit'
 		]);
 
-		Route::post('perjawatanUpdate/{id}', [
+		Route::post('perjawatan/{noPekerja}', [
 			'as'	=> 'updatePerjawatanPost',
 			'uses'	=> 'PerjawatanController@update'
 		]);
@@ -69,6 +69,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 	Route::get('profile/{id}', [
 		'as'	=> 'profileAhli',
 		'uses'	=> 'ProfileController@profile'
+	]);
+
+	Route::get('carian', [
+		'as'	=> 'carianAhli',
+		'uses'	=> 'CarianController@index'
+	]);
+
+	Route::post('carian', [
+		'as'	=> 'carianAhli',
+		'uses'	=> 'CarianController@indexPost'
 	]);
 
 

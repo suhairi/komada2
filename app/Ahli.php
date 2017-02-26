@@ -24,4 +24,11 @@ class Ahli extends Model
     }
 
 
+    // RELATIONSHIPS
+
+    public function perjawatan() {
+        return $this->hasOne('App\Perjawatan', 'noPekerja', 'noPekerja');
+    }
+
+
 }

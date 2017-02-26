@@ -30,5 +30,9 @@ class Ahli extends Model
         return $this->hasOne('App\Perjawatan', 'noPekerja', 'noPekerja');
     }
 
+    public function yuran() {
+        return $this->hasOne('App\Yuran', 'noPekerja', 'noPekerja');
+    }
+
 
 }

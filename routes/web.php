@@ -65,11 +65,36 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 
 	});
 
+	// YURAN
+
+	Route::group(['prefix' => 'yuran'], function() {
+
+		Route::get('yuran/{id}', [
+			'as'	=> 'updateYuran',
+			'uses'	=> 'YuranController@update'
+		]);
+
+		Route::post('yuran/{id}', [
+			'as'	=> 'updateYuranPost',
+			'uses'	=> 'YuranController@updatePost'
+		]);
+
+	});
+
+
+
+	// SETTINGS
+
 	Route::group(['prefix' => 'settings'], function() {
 
 		Route::get('tka', [
 			'as'	=> 'settings.tka',
 			'uses'	=> 'SettingsController@tka'
+		]);
+
+		Route::post('tka', [
+			'as'	=> 'setting.tka',
+			'uses'	=> 'SettingsController@tkaPost'
 		]);
 
 	});

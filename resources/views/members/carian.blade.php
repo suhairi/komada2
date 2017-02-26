@@ -15,6 +15,7 @@
 					<br />
 					{!! Form::submit('Carian', ['class' => 'btn btn-primary']) !!}
 				</div>
+				{!! Form::close() !!}
 			</div>
 		</div>
 

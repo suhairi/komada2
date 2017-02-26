@@ -65,6 +65,15 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 
 	});
 
+	Route::group(['prefix' => 'settings'], function() {
+
+		Route::get('tka', [
+			'as'	=> 'settings.tka',
+			'uses'	=> 'SettingsController@tka'
+		]);
+
+	});
+
 	// HELPERS
 	Route::get('profile/{id}', [
 		'as'	=> 'profileAhli',

@@ -11,13 +11,13 @@
 				
 				{!! Form::open() !!}
 				<div class="form-group">
-					<label>Bulan/Tahun</label>
+					<label>Bulan / Tahun</label>
 					{!! Form::selectMonth('month', '', ['class' => 'form-control', 'required' => 'true', 'placeholder' => 'Bulan']) !!} <br />
 					{!! Form::select('year', $years, '', ['class' => 'form-control', 'required' => 'true', 'placeholder' => 'Tahun']) !!}
 				</div>
 
 				<div class="form-group">
-				{!! Form::submit('submit', ['class' => 'btn btn-primary pull-right']) !!}
+				{!! Form::submit('Proses Yuran Bulanan', ['class' => 'btn btn-primary pull-right']) !!}
 				</div>
 
 

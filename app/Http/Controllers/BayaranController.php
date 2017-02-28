@@ -49,6 +49,7 @@ class BayaranController extends Controller
 			$bayaran_yuran->save();
 
 			// 2 - Bayaran TKA
+			$this->tka($temp->noPekerja);
 
 
 			// 3 - Bayaran Sumbangan

@@ -47,8 +47,6 @@ class SettingsController extends Controller
 
         $sumbangans = Sumbangan::get();
 
-        dd($sumbangans);
-
         return view('members.settings.sumbangan', compact('years', 'sumbangans'));
     }
 
@@ -66,13 +64,14 @@ class SettingsController extends Controller
         $sumbangan->month   = $request->get('month');
         $sumbangan->year    = $request->get('year');
         $sumbangan->jumlah  = $request->get('jumlah');
+        $sumbangan->catatan = $request->get('catatan');
 
         if($sumbangan->save())
             Session::flash('success', 'Berjaya. Maklumat Sumbangan telah dikemaskini.');
         else
             Session::flash('error', 'Gagal. Maklumat Sumbangan gagal dikemaskini.');
 
-        return back();
+        return redirect()->route('settings.sumbangan');
     }
 
 }

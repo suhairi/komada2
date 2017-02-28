@@ -10,4 +10,8 @@ class Sumbangan extends Model
     protected $id 		= 'id';
     protected $fillable = ['month', 'year', 'jumlah', 'catatan'];
 
+    public function setCatatanAttribute($value) {
+    	return $this->attributes['catatan'] = strtoupper($value);
+    }
+
 }

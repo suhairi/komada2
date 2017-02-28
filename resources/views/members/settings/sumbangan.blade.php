@@ -29,7 +29,7 @@
 
 				<div class="form-group">
 					{!! Form::label('Catatan') !!}
-					{!! Form::text('jumlah', '', ['class' => 'form-control', 'required' => 'true', 'step' => '0.01', 'placeholder' => 'Kematian/Pendidikan']) !!}
+					{!! Form::text('catatan', '', ['class' => 'form-control', 'required' => 'true', 'step' => '0.01', 'placeholder' => 'Kematian/Pendidikan']) !!}
 				</div>
 
 				<div class="form-group">
@@ -48,17 +48,20 @@
 		<div class="panel-body">
 
 		<table class="table">
-		@foreach($sumbangans as $sumbangan)
-			@if($sumbangan != null)
-				<tr>
-					<td>{{ $sumbangan->month }}/{{ $sumbangan->year}}</td>
-					<td>{{ $sumbangan->catatan }}</td>
-					<td>{{ $sumbangan->jumlah }}</td>
-				</tr>
-			@else
-				<tr><td class="alert alert-danger">Tiada Maklumat</td></tr>
-			@endif
-		@endforeach		
+		<tr>
+			<td><strong>Bulan/Tahun</strong></td>
+			<td><strong>Catatan</strong></td>
+			<td><strong>Jumlah (RM)</strong></td>
+		</tr>
+		@forelse($sumbangans as $sumbangan)			
+			<tr>
+				<td>{{ $sumbangan->month }} / {{ $sumbangan->year}}</td>
+				<td>{{ $sumbangan->catatan }}</td>
+				<td>{{ number_format($sumbangan->jumlah, 2) }}</td>
+			</tr>
+		@empty
+			<tr><td class="alert alert-danger">Tiada Maklumat</td></tr>
+		@endforelse		
 		</table>
 
 		</div>

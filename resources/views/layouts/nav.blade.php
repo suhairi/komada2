@@ -35,13 +35,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bayaran <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ route('bayaran.yuran') }}">Yuran</a></li>
+            <li><a href="{{ route('bayaran.yuran') }}">Yuran Bulanan</a></li>
             <li><a href="#">*Bayaran Tunai</a></li>
             <li><a href="#">*Langsai</a></li>
           </ul>
         </li>
-
-
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Senarai <span class="caret"></span></a>

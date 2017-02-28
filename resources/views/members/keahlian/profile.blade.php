@@ -48,7 +48,6 @@
 							<button class="btn btn-success"> AKTIF </button>
 						@else
 							<button class="btn btn-danger"> TIDAK AKTIF </button>
-
 						@endif
 					</td>
 				</tr>
@@ -68,26 +67,26 @@
 			<tr>
 				<td colspan="2"><h4>Maklumat Perjawatan</h4></td>
 			</tr>
-			@if(!empty($perjawatan))
+			@if(!empty($ahli->perjawatan))
 				<tr>
 					<td><strong>No Pekerja</strong></td>
-					<td>{{ $perjawatan->noPekerja }}</td>
+					<td>{{ $ahli->perjawatan->noPekerja }}</td>
 				</tr>
 				<tr>
 					<td><strong>Jawatan</strong></td>
-					<td>{{ $perjawatan->jawatan }}</td>
+					<td>{{ $ahli->perjawatan->jawatan }}</td>
 				</tr>
 				<tr>
 					<td><strong>Zon Gaji</strong></td>
-					<td>{{ $perjawatan->zonGaji->nama }}</td>
+					<td>{{ $ahli->perjawatan->zonGaji->nama }}</td>
 				</tr>
 				<tr>
 					<td><strong>Taraf Jawatan</strong></td>
-					<td>{{ $perjawatan->tarafJawatan }}</td>
+					<td>{{ $ahli->perjawatan->tarafJawatan }}</td>
 				</tr>
 				<tr>
 					<td><strong>Tarikh Khidmat</strong></td>
-					<td>{{ $perjawatan->tarikhKhidmat }}</td>
+					<td>{{ $ahli->perjawatan->tarikhKhidmat }}</td>
 				</tr>
 			@else
 				<tr>
@@ -109,13 +108,11 @@
 			<tr>
 				<td colspan="2"><h4>Maklumat Yuran</h4></td>
 			</tr>
-			@if(!empty($perjawatan))
+			@if(!empty($ahli->yuran))
 				<tr>
 					<td><strong>Yuran</strong></td>
 					<td align="right">RM {{ number_format($ahli->yuran->jumlah, 2) }}</td>
 				</tr>
-
-
 			@else
 				<tr>
 					<td colspan="2">Tiada maklumat.</td>

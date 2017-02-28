@@ -31,10 +31,12 @@ class YuranController extends Controller
 
     public function updatePost(Request $request, $id) {
 
-    	$yuran = Yuran::where('noPekerja', $id)->first();
+    	$yuran = Yuran::where('noPekerja', $request->get('noPekerja'))->get();
+        foreach($yuran as $temp) {
+            $temp->delete();
+        }
 
-    	if($yuran == null)
-    		$yuran = new Yuran;
+    	$yuran = new Yuran;
 
     	$yuran->noPekerja	= $request->get('noPekerja');
     	$yuran->jumlah 		= $request->get('jumlah');

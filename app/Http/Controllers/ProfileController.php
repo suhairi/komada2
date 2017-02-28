@@ -13,8 +13,8 @@ class ProfileController extends Controller
 
     	$ahli = Ahli::where('id', $id)->first();
 
-    	$perjawatan = Perjawatan::where('noPekerja', $ahli->noPekerja)->first();
+    	// dd($ahli->yuran->jumlah);
 
-    	return view('members.keahlian.profile', compact('ahli', 'perjawatan'));
+    	return view('members.keahlian.profile', compact('ahli'));
     }
 }

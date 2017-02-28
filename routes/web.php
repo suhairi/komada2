@@ -82,6 +82,25 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 	});
 
 
+	// BAYARAN
+
+	Route::group(['prefix' => 'bayaran'], function() {\
+
+		// Yuran
+		Route::get('yuran', [
+			'as'	=> 'bayaran.yuran',
+			'uses'	=> 'BayaranController@yuran'
+		]);
+
+		Route::post('yuran', [
+			'as'	=> 'bayaran.yuran',
+			'uses'	=> 'BayaranController@yuranPost'
+		]);
+
+
+	});
+
+
 
 	// SETTINGS
 
@@ -93,9 +112,22 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 		]);
 
 		Route::post('tka', [
-			'as'	=> 'setting.tka',
+			'as'	=> 'settings.tka',
 			'uses'	=> 'SettingsController@tkaPost'
 		]);
+
+		Route::get('sumbangan', [
+			'as'	=> 'settings.sumbangan',
+			'uses'	=> 'SettingsController@sumbangan'
+		]);
+
+		Route::post('sumbangan', [
+			'as'	=> 'settings.sumbangan',
+			'uses'	=> 'SettingsController@sumbanganPost'
+		]);
+
+
+
 
 	});
 

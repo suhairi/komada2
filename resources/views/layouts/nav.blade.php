@@ -22,43 +22,43 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pinjaman <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Wang Tunai</a></li>
-            <li><a href="#">Cukai Jalan</a></li>
-            <li><a href="#">Buku</a></li>
-            <li><a href="#">Tayar Bateri</a></li>
-            <li><a href="#">Carian</a></li>
-            <li><a href="#">Carian</a></li>
+            <li><a href="#">*Wang Tunai</a></li>
+            <li><a href="#">*Buku Sekolah</a></li>
+            <li><a href="#">*Kecemasan</a></li>
+            <li><a href="#">*Tayar Bateri</a></li>
+            <li><a href="#">*Cukai Jalan</a></li>
+            <li><a href="#">*Insurans</a></li>
+            <li><a href="#">*Pertaruhan</a></li>
           </ul>
         </li>
 
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sumbangan <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bayaran <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Kematian</a></li>
-            <li><a href="#">Pelajaran</a></li>
+            <li><a href="{{ route('bayaran.yuran') }}">Yuran</a></li>
+            <li><a href="#">*Bayaran Tunai</a></li>
+            <li><a href="#">*Langsai</a></li>
           </ul>
         </li>
+
+
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Senarai <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Senarai Mengikut Jenis Pinjaman</a></li>
-            <li><a href="#">Senarai Mengikut Zon Gaji</a></li>
+            <li><a href="#">*Senarai Mengikut Jenis Pinjaman</a></li>
+            <li><a href="#">*Senarai Mengikut Zon Gaji</a></li>
           </ul>
         </li>
         
       </ul>
-
-      
-
-
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ route('settings.tka') }}">TKA</a></li>
-            <li><a href="#">TKA</a></li>
+            <li><a href="{{ route('settings.sumbangan') }}">Sumbangan</a></li>
             <li><a href="#">Tukar Password</a></li>
           </ul>
         </li>

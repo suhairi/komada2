@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Session;
+
 use App\Ahli;
 use App\Yuran;
 use App\BayaranYuran;
+use App\Tka;
+use App\BayaranTka;
+use App\Sumbangan;
+use App\BayaranSumbangan;
+
 
 class BayaranController extends Controller
 {
@@ -49,23 +56,73 @@ class BayaranController extends Controller
 			$bayaran_yuran->save();
 
 			// 2 - Bayaran TKA
-			$this->tka($temp->noPekerja);
-
+			$this->tka($temp->noPekerja, $request->get('month'), $request->get('year'));
 
 			// 3 - Bayaran Sumbangan
+			$this->sumbangan($temp->noPekerja, $request->get('month'), $request->get('year'));
 
 		}
 
- 		return $request->all();
+		Session::flash('success', 'Berjaya. Bayaran yuran bulanan, tka, sumbangan telah dikemaskini.');
+
+ 		return back();
  	}
 
 
-
-
-
  	// HELPER FUNCTIONS
- 	protected function tka($noPekerja) {
- 		
+ 	protected function tka($noPekerja, $month, $year) {
+ 		$bayaran_tka = BayaranTka::where('noPekerja', $noPekerja)
+ 						->where('month', $month)
+ 						->where('year', $year)
+ 						->get();
+
+		if($bayaran_tka != null) {
+			foreach($bayaran_tka as $temp)
+				$temp->delete();
+		}
+
+		$tka = Tka::where('status', 1)->first();
+
+		if($tka != null) {
+			$bayaran_tka = new BayaranTka;
+			$bayaran_tka->month 	= $month;
+			$bayaran_tka->year 		= $year;
+			$bayaran_tka->noPekerja	= $noPekerja;
+			$bayaran_tka->jumlah 	= $tka->jumlah;
+			$bayaran_tka->save();
+		}
+ 	}
+
+ 	protected function sumbangan($noPekerja, $month, $year) {
+ 		$bayaran_sumbangan = BayaranSumbangan::where('noPekerja', $noPekerja)
+ 		 						->where('month', $month)
+ 		 						->where('year', $year)
+ 		 						->get();
+
+		if($bayaran_sumbangan != null) {
+			foreach($bayaran_sumbangan as $temp)
+				$temp->delete();
+		}
+
+		$sumbangan = Sumbangan::where('month', $month)
+						->where('year', $year)
+						->get();
+
+		if($sumbangan != null) {
+
+			foreach($sumbangan as $temp) {
+				$bayaran_sumbangan = new BayaranSumbangan;
+				$bayaran_sumbangan->month 		= $month;
+				$bayaran_sumbangan->year 		= $year;
+				$bayaran_sumbangan->noPekerja	= $noPekerja;
+				$bayaran_sumbangan->jumlah 		= $temp->jumlah;
+				$bayaran_sumbangan->catatan 	= $temp->catatan;
+				$bayaran_sumbangan->save();
+			}			
+		}
+
+
+
  	}
 
 

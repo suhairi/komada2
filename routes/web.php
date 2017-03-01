@@ -100,6 +100,22 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 
 	});
 
+	// SENARAI
+
+	Route::group(['prefix' => 'senarai'], function() {
+
+		Route::get('zongaji', [
+			'as'	=> 'senarai.zongaji',
+			'uses'	=> 'SenaraiController@zongaji'
+		]);
+
+		Route::post('zongaji', [
+			'as'	=> 'senarai.zongaji',
+			'uses'	=> 'SenaraiController@zonGajiPost'
+		]);
+
+	});
+
 
 
 	// SETTINGS

@@ -60,7 +60,7 @@
 				<td>{{ number_format($sumbangan->jumlah, 2) }}</td>
 			</tr>
 		@empty
-			<tr><td class="alert alert-danger">Tiada Maklumat</td></tr>
+			<tr><td class="alert alert-danger" colspan="3">Tiada Maklumat</td></tr>
 		@endforelse		
 		</table>
 

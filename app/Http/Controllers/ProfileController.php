@@ -13,8 +13,6 @@ class ProfileController extends Controller
 
     	$ahli = Ahli::where('id', $id)->first();
 
-    	// dd($ahli->yuran->jumlah);
-
     	return view('members.keahlian.profile', compact('ahli'));
     }
 }

@@ -113,6 +113,9 @@
 					<td><strong>Yuran</strong></td>
 					<td align="right">RM {{ number_format($ahli->yuran->jumlah, 2) }}</td>
 				</tr>
+				<tr>
+					<td align="right" colspan="3"><a href="#" class="pull-right">Klik untuk maklumat lanjut</a></td>
+				</tr>
 			@else
 				<tr>
 					<td colspan="2">Tiada maklumat.</td>

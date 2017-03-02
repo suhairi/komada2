@@ -65,6 +65,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings 2<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ route('settings2.profile') }}">Migrate Profile</a></li>
+            <li><a href="{{ route('settings2.perjawatan') }}">Migrate Perjawatan</a></li>
           </ul>
         </li>
         <li class="dropdown">

@@ -17,7 +17,7 @@ class AhliController extends Controller
      */
     public function index()
     {
-        $members = Ahli::latest()->get();
+        $members = Ahli::latest()->take(15)->get();
 
         return view('members.keahlian.index', compact('members'));
     }

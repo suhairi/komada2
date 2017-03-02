@@ -154,6 +154,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'uses'	=> 'Settings2Controller@profile'
 		]);
 
+		Route::get('perjawatan', [
+			'as'	=> 'settings2.perjawatan',
+			'uses' 	=> 'Settings2Controller@perjawatan'
+		]);
+
 	});
 
 

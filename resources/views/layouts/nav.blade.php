@@ -53,12 +53,18 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings 1<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ route('settings.tka') }}">TKA</a></li>
             <li><a href="{{ route('settings.sumbangan') }}">Sumbangan</a></li>
             <li><a href="#">*Bayaran Yuran Terdahulu</a></li>
             <li><a href="#">*Tukar Password</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings 2<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ route('settings2.profile') }}">Migrate Profile</a></li>
           </ul>
         </li>
         <li class="dropdown">

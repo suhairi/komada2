@@ -143,9 +143,21 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 		]);
 
 
+	});
 
+	// SETTINGS 2
+
+	Route::group(['prefix' => 'settings'], function() {
+
+		Route::get('profile', [
+			'as'	=> 'settings2.profile',
+			'uses'	=> 'Settings2Controller@profile'
+		]);
 
 	});
+
+
+
 
 	// HELPERS
 	Route::get('profile/{id}', [

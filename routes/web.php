@@ -79,6 +79,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'uses'	=> 'PinjamanController@pwtPost'
 		]);
 
+		Route::post('pwt/proses', [
+			'as'	=> 'pwt.proses',
+			'uses'	=> 'PinjamanController@pwtProses'
+		]);
+
 	});
 
 	// YURAN
@@ -112,6 +117,18 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'as'	=> 'bayaran.yuran',
 			'uses'	=> 'BayaranController@yuranPost'
 		]);
+
+		Route::get('tunai', [
+			'as'	=> 'bayaran.tunai',
+			'uses'	=> 'BayaranController@tunai'
+		]);
+
+		Route::post('tunai', [
+			'as'	=> 'bayaran.tunai',
+			'uses'	=> 'BayaranController@tunaiPost'
+		]);
+
+
 
 
 	});

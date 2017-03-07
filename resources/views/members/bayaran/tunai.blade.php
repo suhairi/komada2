@@ -9,7 +9,7 @@
 			<div class="panel-heading panel-title"><h4>Pinjaman Wang Tunai</h4></div>
 			<div class="panel-body">
 				
-				{!! Form::open(['route' => 'pwt']) !!}
+				{!! Form::open(['route' => 'bayaran.tunai']) !!}
 				<div class="form-group">
 					<label>No Pekerja</label>
 					{!! Form::text('noPekerja', '', ['class' => 'form-control', 'required' => 'true', 'placeholder' => 'No Pekerja']) !!}

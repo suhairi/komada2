@@ -26,6 +26,12 @@ class Perjawatan extends Model
     	return $this->belongsTo('App\Ahli', 'noPekerja', 'noPekerja');
     }
 
+    public function yuran() {
+        return $this->belongsTo('App\Yuran', 'noPekerja', 'noPekerja');
+    }
+
+
+
     public function zongaji() {
         return $this->belongsTo('App\ZonGaji', 'zonGaji_id', 'id');
     }

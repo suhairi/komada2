@@ -21,12 +21,6 @@ class SenaraiController extends Controller
 
     	$perjawatan = Perjawatan::where('zongaji_id', $request->get('zongaji'))->get();
 
-    // 	$ahli = $perjawatan->filter(function($temp) {
-				// 	if($temp->ahli->status == 1)
-				// 		return true;
-				// });
-
-
     	return view('members.senarai.zongajiresult', compact('perjawatan'));
     }
 

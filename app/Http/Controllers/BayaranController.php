@@ -13,6 +13,7 @@ use App\Tka;
 use App\BayaranTka;
 use App\Sumbangan;
 use App\BayaranSumbangan;
+use App\Pwt;
 
 
 class BayaranController extends Controller
@@ -66,6 +67,29 @@ class BayaranController extends Controller
 		Session::flash('success', 'Berjaya. Bayaran yuran bulanan, tka, sumbangan telah dikemaskini.');
 
  		return back();
+ 	}
+
+ 	public function tunai() {
+
+ 		return view('members.bayaran.tunai');
+ 	}
+
+ 	public function tunaiPost(Request $request) {
+
+ 		// set tahun awal kepada tahun 2016
+ 		$current = 2016;
+
+ 		$years = Array();
+
+ 		for($i=$current; $i<=date('Y'); $i++) {
+ 			$years[$i] = $i;
+ 		}
+
+ 		$pwt = Pwt::where('noPekerja', $request->noPekerja)
+ 				->where('status', 1)
+ 				->first();
+
+ 		return view('members.bayaran.tunaiPost', compact('years', 'pwt'));
  	}
 
 

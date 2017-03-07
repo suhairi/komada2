@@ -87,7 +87,9 @@ class BayaranController extends Controller
 
  		$pwt = Pwt::where('noPekerja', $request->noPekerja)
  				->where('status', 1)
- 				->first();
+ 				->get();
+
+		// dd($pwt);
 
  		return view('members.bayaran.tunaiPost', compact('years', 'pwt'));
  	}
@@ -144,14 +146,7 @@ class BayaranController extends Controller
 				$bayaran_sumbangan->save();
 			}			
 		}
-
-
-
  	}
-
-
-
-
 
 
 

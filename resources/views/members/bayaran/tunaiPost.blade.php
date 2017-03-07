@@ -6,7 +6,7 @@
 	<div class="col-xs-5">
 		
 		<div class="panel panel-primary">
-			<div class="panel-heading panel-title"><h4>Bayaran Yuran Bulanan</h4></div>
+			<div class="panel-heading panel-title"><h4>Bayaran Tunai</h4></div>
 			<div class="panel-body">
 				
 				{!! Form::open() !!}
@@ -35,6 +35,38 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="col-xs-5">
+		
+		<div class="panel panel-primary">
+			<div class="panel-heading panel-title"><h4>Maklumat Pinjaman</h4></div>
+			<div class="panel-body">
+
+				<table class="table">
+					<tr>
+						<td>Bil</td>
+						<td>Jenis Pinjaman</td>
+						<td>Jumlah Pinjaman</td>
+						<td>Baki Pinjaman</td>
+					</tr>
+					@forelse($pwt as $temp)
+						<tr>
+							<td>{{ $loop->iteration }}</td>
+							<td>{{ $temp->perkhidmatan->nama }}</td>
+							<td>{{ $temp->baki }}</td>
+						</tr>
+					@empty
+						<tr>
+							<td colspan="4" class="alert alert-danger">Tiada Maklumat Pinjaman.</td>
+						</tr>
+					@endforelse
+				</table>
+			
+			</div>
+		</div>
+	</div>
+
+
 </div>
 
 

@@ -44,7 +44,7 @@ class PerkhidmatanTableSeeder extends Seeder
     	]);
 
     	Perkhidmatan::create([
-        	'kod'	=> 'Pertaruhan',
+        	'kod'	=> 'pertaruhan',
         	'nama'	=> strtoupper('Pertaruhan')
     	]);
 

@@ -52,8 +52,9 @@
 					@forelse($pwt as $temp)
 						<tr>
 							<td>{{ $loop->iteration }}</td>
-							<td>{{ $temp->perkhidmatan->nama }}</td>
-							<td>{{ $temp->baki }}</td>
+							<td>{{ strtoupper('pinjaman wang tunai') }}</td>
+							<td>{{ number_format($temp->jumlah, 2 ) }}</td>
+							<td>{{ number_format($temp->baki, 2 ) }}</td>
 						</tr>
 					@empty
 						<tr>

@@ -89,8 +89,6 @@ class BayaranController extends Controller
  				->where('status', 1)
  				->get();
 
-		// dd($pwt);
-
  		return view('members.bayaran.tunaiPost', compact('years', 'pwt'));
  	}
 

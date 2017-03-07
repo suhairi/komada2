@@ -65,6 +65,22 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 
 	});
 
+	// PINJAMAN
+
+	Route::group(['prefix' => 'pinjaman'], function() {
+
+		Route::get('pwt', [
+			'as'	=> 'pwt',
+			'uses'	=> 'PinjamanController@pwt'
+		]);
+
+		Route::post('pwt', [
+			'as'	=> 'pwt',
+			'uses'	=> 'PinjamanController@pwtPost'
+		]);
+
+	});
+
 	// YURAN
 
 	Route::group(['prefix' => 'yuran'], function() {
@@ -158,6 +174,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'as'	=> 'settings2.perjawatan',
 			'uses' 	=> 'Settings2Controller@perjawatan'
 		]);
+
+		Route::get('yuran', [
+			'as'	=> 'settings2.yuran',
+			'uses' 	=> 'Settings2Controller@yuran'
+		]);
+
+
 
 	});
 

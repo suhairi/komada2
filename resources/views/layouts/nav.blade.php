@@ -22,7 +22,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pinjaman <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">*Wang Tunai</a></li>
+            <li><a href="{{ route('pwt') }}">Wang Tunai</a></li>
             <li><a href="#">*Buku Sekolah</a></li>
             <li><a href="#">*Kecemasan</a></li>
             <li><a href="#">*Tayar Bateri</a></li>
@@ -66,6 +66,7 @@
           <ul class="dropdown-menu">
             <li><a href="{{ route('settings2.profile') }}">Migrate Profile</a></li>
             <li><a href="{{ route('settings2.perjawatan') }}">Migrate Perjawatan</a></li>
+            <li><a href="{{ route('settings2.yuran') }}">Migrate Yuran</a></li>
           </ul>
         </li>
         <li class="dropdown">

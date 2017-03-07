@@ -9,6 +9,9 @@ use Session;
 use App\settings2\Profile;
 use App\Ahli;
 use App\Perjawatan;
+use App\Yuran;
+
+use Carbon\Carbon;
 
 class Settings2Controller extends Controller
 {
@@ -61,11 +64,37 @@ class Settings2Controller extends Controller
             $perjawatan = new Perjawatan;
 
             $perjawatan->noPekerja      = $profile->no_gaji;
-            $perjawatan->tarikhKhidmat  = $profile->tarikh_khidmat;
+
+            if($profile->tarikh_khidmat <= 0)
+                $perjawatan->tarikhKhidmat = Carbon::today();
+            else
+                $perjawatan->tarikhKhidmat  = $profile->tarikh_khidmat;
             $perjawatan->jawatan        = $profile->jawatan;
             $perjawatan->tarafJawatan   = $profile->taraf_jawatan;
             $perjawatan->zonGaji_id     = (int)$profile->zon_gaji_id;
             $perjawatan->save();
+        }
+
+        Session::flash('success', 'Berjaya. Migrate Perjawatan Selesai!');
+        return back();
+    }
+
+    public function yuran() {
+
+        $perjawatan = Yuran::get();
+
+        foreach($perjawatan as $temp)
+            $temp->delete();
+
+        $profiles = Profile::all();
+
+        foreach($profiles as $profile) {
+
+            $yuran = new Yuran;
+
+            $yuran->noPekerja      = $profile->no_gaji;
+            $yuran->jumlah         = $profile->jumlah_yuran_bulanan;
+            $yuran->save();
         }
 
         Session::flash('success', 'Berjaya. Migrate Perjawatan Selesai!');

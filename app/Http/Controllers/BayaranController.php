@@ -13,7 +13,9 @@ use App\Tka;
 use App\BayaranTka;
 use App\Sumbangan;
 use App\BayaranSumbangan;
-use App\Pwt;
+use App\Pinjaman;
+use App\Perkhidmatan;
+use App\BayaranTunai;
 
 
 class BayaranController extends Controller
@@ -76,24 +78,92 @@ class BayaranController extends Controller
 
  	public function tunaiPost(Request $request) {
 
+ 		$ahli = $this->checkAhli($request->noPekerja);
+
+ 		if(!$ahli)
+ 			return back();
+
  		// set tahun awal kepada tahun 2016
- 		$current = 2016;
+ 		$startYear = 2016;
 
  		$years = Array();
 
- 		for($i=$current; $i<=date('Y'); $i++) {
+ 		for($i=$startYear; $i<=date('Y'); $i++) {
  			$years[$i] = $i;
  		}
 
- 		$pwt = Pwt::where('noPekerja', $request->noPekerja)
- 				->where('status', 1)
- 				->get();
+ 		// 1 - PWT
+		// 2 - Buku Sekolah
+		// 3 - Kecemasan
+		// 4 - Tayar Bateri
+		// 5 - Cukai Jalan
+		// 6 - Insurans
+		// 7 - Pertaruhan
+		$pinjaman 	= Pinjaman::where('noPekerja', $request->noPekerja)
+						->where('status', 1)
+						->get();
 
- 		return view('members.bayaran.tunaiPost', compact('years', 'pwt'));
+		if($pinjaman == null){
+			Session::flash('error', 'Gagal. Tiada maklumat pinjaman.');
+			return back();
+		}
+
+ 		return view('members.bayaran.tunaiPost', compact('ahli', 'years', 'pinjaman'));
+ 	}
+
+ 	public function prosesBayaran(Request $request) {
+
+ 		$pinjaman = Pinjaman::where('noPekerja', $request->noPekerja)
+ 					->where('id', $request->id)
+ 					->where('status', 1)
+ 					->first();
+
+		if($pinjaman != null) {
+
+			if($request->jumlah <= $pinjaman->baki) {
+				$bayaran = new BayaranTunai;
+		 		$bayaran->noPekerja 		= $request->noPekerja;
+		 		$bayaran->month 			= $request->month;
+		 		$bayaran->year 				= $request->year;
+		 		$bayaran->jumlah 			= $request->jumlah;
+		 		$bayaran->perkhidmatan_id 	= $pinjaman->perkhidmatan_id;
+
+		 		if($bayaran->save()){
+		 			$pinjaman->baki = $pinjaman->baki - $request->jumlah;
+		 			$pinjaman->save();
+
+		 			Session::flash('success', 'Berjaya. Bayaran telah diproses.');
+		 			return back();
+		 		}
+
+
+			} else {
+				Session::flash('error', 'Gagal. Jumlah bayaran melebihi baki.');
+				return back();
+			}			
+		} else {
+			Session::flash('error', 'Gagal. Tiada maklumat pinjaman.');
+			return back();
+		}
+
+ 		
+
+ 		return $request->all();
  	}
 
 
  	// HELPER FUNCTIONS
+ 	protected function checkAhli($noPekerja) {
+
+ 		$ahli = Ahli::where('noPekerja', $noPekerja)->first();
+
+		if($ahli == null) {
+ 			Session::flash('error', 'Gagal. No Pekerja ini tiada dalam database.');
+ 			return false;
+ 		} else
+ 			return $ahli;
+ 	}
+
  	protected function tka($noPekerja, $month, $year) {
  		$bayaran_tka = BayaranTka::where('noPekerja', $noPekerja)
  						->where('month', $month)

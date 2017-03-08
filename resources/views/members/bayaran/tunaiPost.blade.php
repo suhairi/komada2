@@ -9,11 +9,23 @@
 			<div class="panel-heading panel-title"><h4>Bayaran Tunai</h4></div>
 			<div class="panel-body">
 				
-				{!! Form::open() !!}
+				{!! Form::open(['route' => 'bayaran.tunai.proses']) !!}
+
+				{!! Form::hidden('noPekerja', $ahli->noPekerja) !!}
 				<div class="form-group">
 					<label>Bulan / Tahun</label>
 					{!! Form::selectMonth('month', '', ['class' => 'form-control', 'required' => 'true', 'placeholder' => 'Bulan']) !!} <br />
 					{!! Form::select('year', $years, '', ['class' => 'form-control', 'required' => 'true', 'placeholder' => 'Tahun']) !!}
+				</div>
+
+				<div class="form-group">
+					<label>Pinjaman - Baki</label>
+					<select name="id" required="" class="form-control">
+						<option>Pinjaman</option>
+						@foreach($pinjaman as $temp)
+							<option value="{{ $temp->id }}">{{ $temp->perkhidmatan->nama }} (Baki : RM {{ $temp->baki }})</option>
+						@endforeach
+					</select>
 				</div>
 
 				<div class="form-group">
@@ -49,7 +61,7 @@
 						<td>Jumlah Pinjaman</td>
 						<td>Baki Pinjaman</td>
 					</tr>
-					@forelse($pwt as $temp)
+					@forelse($pinjaman as $temp)
 						<tr>
 							<td>{{ $loop->iteration }}</td>
 							<td>{{ strtoupper('pinjaman wang tunai') }}</td>

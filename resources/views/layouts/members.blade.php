@@ -31,7 +31,7 @@
     @endif 
 
     @if(Session::has('error'))
-        <div class="alert alert-error">
+        <div class="alert alert-danger">
             <h4>{{ Session::get('error') }}</h4>
         </div>
     @endif 

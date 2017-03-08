@@ -30,10 +30,11 @@ class Perjawatan extends Model
         return $this->belongsTo('App\Yuran', 'noPekerja', 'noPekerja');
     }
 
-
-
     public function zongaji() {
         return $this->belongsTo('App\ZonGaji', 'zonGaji_id', 'id');
     }
     
+    public function pinjaman() {
+        return $this->belongsTo('App\Pinjaman', 'noPekerja', 'noPekerja');
+    }
 }

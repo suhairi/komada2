@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePinjamanPwtTable extends Migration
+class CreatePinjamanTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePinjamanPwtTable extends Migration
      */
     public function up()
     {
-        Schema::create('pinjaman_pwt', function (Blueprint $table) {
+        Schema::create('pinjaman', function (Blueprint $table) {
             $table->increments('id');
             $table->string('noPekerja', 10);
             $table->float('jumlah', 7, 2);
@@ -24,6 +24,7 @@ class CreatePinjamanPwtTable extends Migration
             $table->float('ansuran', 7, 2);
             $table->float('baki', 7, 2);
             $table->tinyInteger('status', false, false);
+            $table->tinyInteger('perkhidmatan_id', false, false);
             $table->timestamps();
         });
     }
@@ -35,6 +36,6 @@ class CreatePinjamanPwtTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pinjaman_pwt');
+        Schema::dropIfExists('pinjaman');
     }
 }

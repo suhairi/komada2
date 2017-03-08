@@ -79,9 +79,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'uses'	=> 'PinjamanController@pwtPost'
 		]);
 
-		Route::post('pwt/proses', [
-			'as'	=> 'pwt.proses',
-			'uses'	=> 'PinjamanController@pwtProses'
+		Route::post('pinjaman/proses', [
+			'as'	=> 'pinjaman.proses',
+			'uses'	=> 'PinjamanController@pinjamanProses'
 		]);
 
 	});
@@ -126,6 +126,11 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 		Route::post('tunai', [
 			'as'	=> 'bayaran.tunai',
 			'uses'	=> 'BayaranController@tunaiPost'
+		]);
+
+		Route::post('tunai/proses', [
+			'as'	=> 'bayaran.tunai.proses',
+			'uses'	=> 'BayaranController@prosesBayaran'
 		]);
 
 
@@ -197,11 +202,18 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'uses' 	=> 'Settings2Controller@yuran'
 		]);
 
+		Route::get('yuranTerkumpul', [
+			'as'	=> 'settings2.yuran.terkumpul',
+			'uses'	=> 'Settings2Controller@yuranTerkumpul'
+		]);
+		
+		Route::get('loans', [
+			'as'	=> 'settings2.loan',
+			'uses'	=> 'Settings2Controller@loan'
+		]);
 
 
 	});
-
-
 
 
 	// HELPERS
@@ -218,6 +230,16 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 	Route::post('carian', [
 		'as'	=> 'carianAhli',
 		'uses'	=> 'CarianController@indexPost'
+	]);
+
+	Route::get('kemaskini/baki/{pinjaman_id}', [
+		'as'	=> 'kemaskini.baki',
+		'uses'	=> 'Settings2Controller@kemaskiniBaki'
+	]);
+
+	Route::post('kemaskini/baki/{pinjaman_id}', [
+		'as'	=> 'kemaskini.baki',
+		'uses'	=> 'Settings2Controller@kemaskiniBakiPost'
 	]);
 
 

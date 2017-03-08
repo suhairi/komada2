@@ -56,8 +56,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings 1<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{{ route('settings.tka') }}">TKA</a></li>
-            <li><a href="{{ route('settings.sumbangan') }}">Sumbangan</a></li>
-            <li><a href="#">*Bayaran Yuran Terdahulu</a></li>
+            <li><a href="{{ route('settings.sumbangan') }}">Sumbangan</a></li>            
             <li><a href="#">*Tukar Password</a></li>
           </ul>
         </li>
@@ -67,6 +66,8 @@
             <li><a href="{{ route('settings2.profile') }}">Migrate Profile</a></li>
             <li><a href="{{ route('settings2.perjawatan') }}">Migrate Perjawatan</a></li>
             <li><a href="{{ route('settings2.yuran') }}">Migrate Yuran</a></li>
+            <li><a href="{{ route('settings2.yuran.terkumpul') }}">Migrate Yuran Terdahulu</a></li>
+            <li><a href="{{ route('settings2.loan') }}">Migrate Loans</a></li>
           </ul>
         </li>
         <li class="dropdown">

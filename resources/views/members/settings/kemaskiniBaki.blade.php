@@ -4,33 +4,33 @@
 
 <div class="row">
 
-	{!! Form::open(['route' => 'pinjaman.proses']) !!}
+	{!! Form::open() !!}
 	<div class="col-xs-3">
 		
 		<div class="panel panel-primary">
-			<div class="panel-heading panel-title"><h4>Pinjaman Wang Tunai</h4></div>
+			<div class="panel-heading panel-title"><h4>Kemaskini Baki Pinjaman</h4></div>
 			<div class="panel-body">
 
-			{!! Form::hidden('perkhidmatan_id', '1') !!}
+			{!! Form::hidden('pinjaman_id', $pinjaman->id) !!}
 
 			<div class="form-group">
 				{!! Form::label('No Pekerja') !!}
-				{!! Form::text('noPekerja', $ahli->noPekerja, ['class' => 'form-control', 'readonly' => 'true']) !!}
+				{!! Form::text('noPekerja', $pinjaman->ahli->noPekerja, ['class' => 'form-control', 'readonly' => 'true']) !!}
 			</div>
 
 			<div class="form-group">
 				<label>*Jumlah Pinjaman</label>
 				<div class="input-group">
 					<span class="input-group-addon">RM</span>
-					{!! Form::number('jumlah', '', ['required' => 'true', 'class' => 'form-control', 'step' => '0.01', 'placeholder' => '0.00', 'id' => 'jumlah']) !!}
+					{!! Form::number('jumlah', $pinjaman->jumlah, ['required' => 'true', 'class' => 'form-control', 'step' => '0.01', 'placeholder' => '0.00', 'id' => 'jumlah']) !!}
 				</div>
 			</div>
 
 			<div class="form-group">
-				{!! Form::label('Kadar (6%)') !!}
+				<label>*Baki</label>
 				<div class="input-group">
-					{!! Form::text('kadar', '6', ['class' => 'form-control', 'readonly' => 'true']) !!}
-					<span class="input-group-addon">%</span>
+					<span class="input-group-addon">RM</span>
+					{!! Form::number('baki', $pinjaman->baki, ['required' => 'true', 'class' => 'form-control', 'step' => '0.01', 'placeholder' => '0.00', 'id' => 'baki']) !!}
 				</div>
 			</div>
 
@@ -38,7 +38,7 @@
 				{!! Form::label('Tempoh (bulan)') !!}
 				<div class="input-group">
 					
-					{!! Form::number('tempoh', '', ['class' => 'form-control', 'id' => 'tempoh']) !!}
+					{!! Form::number('tempoh', $pinjaman->tempoh, ['class' => 'form-control', 'id' => 'tempoh']) !!}
 					<span class="input-group-addon">bulan</span>
 				</div>
 			</div>
@@ -47,7 +47,7 @@
 				<label>Insurans</label>
 				<div class="input-group">
 					<span class="input-group-addon">RM</span>
-					{!! Form::number('insurans', '', ['required' => 'true', 'class' => 'form-control', 'step' => '0.01', 'placeholder' => '0.00', 'id' => 'insurans']) !!}
+					{!! Form::number('insurans', $pinjaman->insurans, ['required' => 'true', 'class' => 'form-control', 'step' => '0.01', 'placeholder' => '0.00', 'id' => 'insurans']) !!}
 				</div>
 			</div>
 
@@ -55,42 +55,24 @@
 				<label>Bayaran Proses</label>
 				<div class="input-group">
 					<span class="input-group-addon">RM</span>
-					{!! Form::number('bayaran_proses', '', ['required' => 'true', 'class' => 'form-control', 'step' => '0.01', 'placeholder' => '0.00', 'id' => 'proses']) !!}
+					{!! Form::number('bayaran_proses', $pinjaman->caj_proses, ['required' => 'true', 'class' => 'form-control', 'step' => '0.01', 'placeholder' => '0.00', 'id' => 'proses']) !!}
 				</div>
 			</div>
 
-			<div class="form-group">
-				{!! Form::submit('Proses Pinjaman', ['class' => 'btn btn-primary pull-right']) !!}
-			</div>
-			</div>
-		</div>
-
-	</div>
-
-	<div class="col-xs-3">		
-		<div class="panel panel-primary">
-			<div class="panel-heading panel-title"><h4>Info Bayaran</h4></div>
-			<div class="panel-body">
-
-			<div class="form-group">
-				{!! Form::label('Jumlah Pinjaman') !!}
-				<div class="input-group">
-					<span class="input-group-addon">RM</span>
-				{!! Form::text('jumlah_pinjaman', '', ['class' => 'form-control', 'readonly' => 'true', 'id' => 'jumlah_pinjaman']) !!}
-				</div>
-			</div>
 			<div class="form-group">
 				{!! Form::label('Jumlah Ansuran Bulanan') !!}
 				<div class="input-group">
 					<span class="input-group-addon">RM</span>
-				{!! Form::text('ansuran', '', ['class' => 'form-control', 'readonly' => 'true', 'id' => 'ansuran']) !!}
+				{!! Form::text('ansuran', $pinjaman->ansuran, ['class' => 'form-control', 'id' => 'ansuran']) !!}
 				</div>
 			</div>
 
-
-
+			<div class="form-group">
+				{!! Form::submit('Kemaskini', ['class' => 'btn btn-primary pull-right']) !!}
+			</div>
 			</div>
 		</div>
+
 	</div>
 
 	{!! Form::close() !!}
@@ -98,9 +80,6 @@
 </div>
 
 @endsection
-
-
-
 
 @section('js')
 
@@ -129,15 +108,14 @@
 	});
 
 	$("input[type='number']").focus(function() {
-		$(this).val('');
+		if($(this).val() == 0 || $(this).val() == '')
+			$(this).val('');
 	});
 
 	$("input[type='number']").focusout(function() {
 		if($(this).val() == '')
 			$(this).val(0);
 	});
-
-
 
 </script>
 @endsection

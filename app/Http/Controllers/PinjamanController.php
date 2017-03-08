@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Session;
 
 use App\Ahli;
-use App\Pwt;
+use App\Pinjaman;
 
 class PinjamanController extends Controller
 {
@@ -28,23 +28,24 @@ class PinjamanController extends Controller
     	return view('members.pinjaman.pwtPost', compact('ahli'));
     }
 
-    public function pwtProses(Request $request) {
+    public function pinjamanProses(Request $request) {
 
-        $pwt = new Pwt;
-        $pwt->noPekerja         = $request->noPekerja;
-        $pwt->jumlah            = $request->jumlah;
-        $pwt->kadar             = $request->kadar;
-        $pwt->tempoh            = $request->tempoh;
-        $pwt->insurans          = $request->insurans;
-        $pwt->bayaran_proses    = $request->bayaran_proses;
-        $pwt->ansuran           = $request->ansuran;
-        $pwt->baki              = $request->jumlah_pinjaman;
-        $pwt->status            = 1;
+        $pinjaman = new Pinjaman;
+        $pinjaman->noPekerja         = $request->noPekerja;
+        $pinjaman->jumlah            = $request->jumlah;
+        $pinjaman->kadar             = $request->kadar;
+        $pinjaman->tempoh            = $request->tempoh;
+        $pinjaman->insurans          = $request->insurans;
+        $pinjaman->bayaran_proses    = $request->bayaran_proses;
+        $pinjaman->ansuran           = $request->ansuran;
+        $pinjaman->baki              = $request->jumlah_pinjaman;
+        $pinjaman->status            = 1;
+        $pinjaman->perkhidmatan_id   = $request->perkhidmatan_id;
 
-        if($pwt->save())
-            Session::flash('success', 'Berjaya. Pinjaman PWT telah diproses.');
+        if($pinjaman->save())
+            Session::flash('success', 'Berjaya. ' . $pinjaman->perkhidmatan->nama . ' telah diproses.');
         else
-            Session::flash('error', 'Berjaya. Pinjaman PWT telah diproses.');
+            Session::flash('error', 'Gagal. ' . $pinjaman->perkhidmatan->nama . ' gagal diproses.');
 
     	return back();
     }

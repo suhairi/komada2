@@ -129,6 +129,34 @@
 				</td>
 			</tr>
 			</table>
+
+			<table class="table table-condensed table-striped table-bordered">
+			<tr>
+				<td colspan="3"><h4>Maklumat Pinjaman</h4></td>
+			</tr>
+			@if(!empty($loans->toArray()))
+
+				<tr>
+					<td><strong>Pinjaman</strong></td>
+					<td><strong>Jumlah</strong></td>
+					<td><strong>Baki</strong></td>
+
+				@foreach($loans as $loan)
+					<tr>
+						<td>{{ $loan->perkhidmatan->nama}} </td>
+						<td align="right">RM {{ number_format($loan->jumlah, 2) }}</td>
+						<td align="right">RM {{ number_format($loan->baki, 2) }}</td>
+					</tr>
+				@endforeach
+				<tr>
+					<td align="right" colspan="3"><a href="#" class="pull-right">Klik untuk maklumat lanjut</a></td>
+				</tr>
+			@else
+				<tr>
+					<td colspan="2">Tiada maklumat.</td>
+				</tr>
+			@endif
+			</table>
 		</div>
 		
 	</div>

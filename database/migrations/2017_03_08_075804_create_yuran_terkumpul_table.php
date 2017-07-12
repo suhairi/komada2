@@ -15,6 +15,8 @@ class CreateYuranTerkumpulTable extends Migration
     {
         Schema::create('yuran_terkumpul', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('noPekerja');
+            $table->float('jumlah', 7, 2);
             $table->timestamps();
         });
     }

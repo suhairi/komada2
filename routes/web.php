@@ -212,6 +212,13 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 			'uses'	=> 'Settings2Controller@loan'
 		]);
 
+		Route::get('removeNoPekerja', [
+			'as'	=> 'settings2.removeNoPekerjaNull',
+			'uses'	=> 'Settings2Controller@removePinjamanNoPekerjaNull'
+		]);
+
+
+
 
 	});
 
@@ -240,6 +247,20 @@ Route::group(['middleware' => 'auth', 'prefix' => 'members'], function() {
 	Route::post('kemaskini/baki/{pinjaman_id}', [
 		'as'	=> 'kemaskini.baki',
 		'uses'	=> 'Settings2Controller@kemaskiniBakiPost'
+	]);
+
+	Route::get('pinjaman/padam/{id}', [
+		'as'	=> 'pinjaman.padam',
+		'uses'	=> 'Settings2Controller@pinjamanPadam'
+	]);
+
+	// MENU PERHATIAN 
+	// TUJUAN DATA CLEANING SAHAJA
+	// BUKAN SEBAHAGIAN DRPD SISTEM
+
+	Route::get('perhatian', [
+		'as'	=> 'perhatian',
+		'uses'	=> 'Settings2Controller@perhatian'
 	]);
 
 

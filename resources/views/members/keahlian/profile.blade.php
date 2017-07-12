@@ -106,23 +106,30 @@
 		<div class="col-xs-4">
 			<table class="table table-condensed table-striped table-bordered">
 			<tr>
-				<td colspan="2"><h4>Maklumat Yuran</h4></td>
+				<td colspan="3"><h4>Maklumat Yuran</h4></td>
 			</tr>
+
 			@if(!empty($ahli->yuran))
+				<tr>
+					<td>Perkara</td>
+					<td>Bulanan</td>
+					<td>Terkumpul</td>
+				</tr>
 				<tr>
 					<td><strong>Yuran</strong></td>
 					<td align="right">RM {{ number_format($ahli->yuran->jumlah, 2) }}</td>
+					<td align="right">RM {{ number_format($ahli->yuranTerkumpul->jumlah, 2) }}</td>
 				</tr>
 				<tr>
 					<td align="right" colspan="3"><a href="#" class="pull-right">Klik untuk maklumat lanjut</a></td>
 				</tr>
 			@else
 				<tr>
-					<td colspan="2">Tiada maklumat.</td>
+					<td colspan="3">Tiada maklumat.</td>
 				</tr>
 			@endif
 			<tr>
-				<td colspan="2">
+				<td colspan="3">
 					<a href="{{ route('updateYuran', ['noPekerja' => $ahli->noPekerja]) }}">
 						<button class="btn btn-primary pull-right">Kemaskini Maklumat Yuran</button>
 					</a>
@@ -140,6 +147,7 @@
 					<td><strong>Pinjaman</strong></td>
 					<td><strong>Jumlah</strong></td>
 					<td><strong>Baki</strong></td>
+				</tr>
 
 				@foreach($loans as $loan)
 					<tr>
@@ -153,7 +161,7 @@
 				</tr>
 			@else
 				<tr>
-					<td colspan="2">Tiada maklumat.</td>
+					<td colspan="3">Tiada maklumat.</td>
 				</tr>
 			@endif
 			</table>

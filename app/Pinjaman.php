@@ -19,10 +19,13 @@ class Pinjaman extends Model
     }
 
     public function yuran() {
-    	return $this->belongsTo('App\yuran', 'noPekerja', 'noPekerja');
+        return $this->belongsTo('App\Yuran', 'noPekerja', 'noPekerja');
     }
 
     public function perkhidmatan() {
     	return $this->belongsTo('App\Perkhidmatan');
     }
+
+
+
 }

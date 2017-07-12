@@ -48,6 +48,7 @@
             <li><a href="{{ route('senarai.zongaji') }}">Senarai Mengikut Zon Gaji</a></li>
           </ul>
         </li>
+        <li><a href="{{ route('perhatian') }}">Perhatian</a></li>
         
       </ul>
 
@@ -68,6 +69,7 @@
             <li><a href="{{ route('settings2.yuran') }}">Migrate Yuran</a></li>
             <li><a href="{{ route('settings2.yuran.terkumpul') }}">Migrate Yuran Terdahulu</a></li>
             <li><a href="{{ route('settings2.loan') }}">Migrate Loans</a></li>
+            <li><a href="{{ route('settings2.removeNoPekerjaNull') }}">Remove No Pekerja Null</a></li>
           </ul>
         </li>
         <li class="dropdown">

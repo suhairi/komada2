@@ -13,6 +13,7 @@ use App\Ahli;
 use App\Perjawatan;
 use App\Yuran;
 use App\Pinjaman;
+use App\YuranTerkumpul;
 
 use Carbon\Carbon;
 
@@ -106,7 +107,21 @@ class Settings2Controller extends Controller
 
     public function yuranTerkumpul() {
 
-        return 'here';
+        $ahlis = Ahli::all();
+
+        foreach($ahlis as $ahli) {
+
+            $yuran2 = Yuran2::where('no_gaji', $ahli->noPekerja)->first();
+
+            $terkumpul = new YuranTerkumpul;
+
+            $terkumpul->noPekerja   = $yuran2->no_gaji;
+            $terkumpul->jumlah      = $yuran2->yuran;
+            $terkumpul->save();
+        }
+
+        Session::flash('success', 'Berjaya. Migrate Yuran Terkumpul Selesai!');
+        return back();
     }
 
     public function loan() {
@@ -136,6 +151,14 @@ class Settings2Controller extends Controller
         }
 
         Session::flash('success', 'Berjaya. Data Pinjaman telah dimigrate.');
+        return back();
+    }
+
+    public function removePinjamanNoPekerjaNull() {
+
+        $loans = Pinjaman::where('noPekerja', '')->delete();
+
+        Session::flash('success', 'Berjaya. No Pekerja bagi table Pinjaman == null telah dipadam.');
         return back();
     }
 
@@ -179,6 +202,41 @@ class Settings2Controller extends Controller
         else
             Session::flash('error', 'Gagal. Maklumat Pinjaman gagal dikemaskini.');
 
+        return back();
+    }
+
+    public function perhatian() {
+
+        //
+        // 1 - pinjaman->noPekerja not in ahli->noPekerja
+        //
+
+        $profiles   = Ahli::pluck('noPekerja')->all();
+        $loans1      = Pinjaman::whereNotIn('noPekerja', $profiles)->get();
+
+        //
+        // 2 - baki <= RM 10.00
+        //
+
+        $loans2 = Pinjaman::where('baki', '<=', 10)->get();
+
+
+        // dd($loans2->ahli->nama);
+
+        //
+        // 3 - Baki melebihi jumlah pinjaman
+        //
+
+        $loans3 = Pinjaman::where('baki', '>', 'jumlah')->get();
+
+        return view('members.perhatian', compact('loans1', 'loans2', 'loans3'));
+    }
+
+    public function pinjamanPadam($id) {
+
+        $loan = Pinjaman::where('id', $id)->delete();
+
+        Session::flash('success', 'Berjaya. Maklumat Pinjaman telah hapus.');
         return back();
     }
 

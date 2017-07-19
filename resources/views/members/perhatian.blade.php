@@ -16,8 +16,8 @@
 			<tr>
 				<td>Bil</td>
 				<td>No Pekerja</td>
-				<td>Jumlah Pinjaman</td>
-				<td>Baki</td>
+				<td align="right">Jumlah Pinjaman</td>
+				<td align="right">Baki</td>
 				<td>Pilihan</td>
 			</tr>
 
@@ -48,8 +48,8 @@
 			<tr>
 				<td>Bil</td>
 				<td>No Pekerja</td>
-				<td>Jumlah Pinjaman</td>
-				<td>Baki</td>
+				<td align="right">Jumlah Pinjaman</td>
+				<td align="right">Baki</td>
 				<td>Pilihan</td>
 			</tr>
 
